@@ -5,34 +5,45 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-/**
- * JavaFX App
- */
 public class MultiLenguajeUI extends Application {
 
-    private static Scene scene;
-
+    private static Stage primaryStage;
+    
+    //Método encargado de preparar la aplicación en su primer inicio
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        
+        //Primero se usa el FXMLloader para cargar la vista, obtenida de los 
+        //recursos de la aplicación
+        MultiLenguajeUI.primaryStage = stage;
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("primary.fxml"));
+        
+        //A continuación se carga el lenguaje que actuara como lenguaje
+        //por defecto (el español en este caso)
+        loader.setResources(ResourceBundle.getBundle(
+                "es.ideas.language/lan", Locale.getDefault()));
+        
+        //Por último se establece la escena con su tamaño, su título y 
+        //se limita el cambiar de tamaño
+        Parent raiz = loader.load();
+        Scene scene = new Scene(raiz, 600, 600);
         stage.setScene(scene);
+        stage.setTitle("Multi-Lenguaje");
+        stage.setResizable(false);
         stage.show();
     }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    
+    //Método necesario para obtener el stage en el controlador
+    public static Stage getPrimaryStage(){
+        return primaryStage;
     }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MultiLenguajeUI.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
+    
     public static void main(String[] args) {
         launch();
     }
-
 }

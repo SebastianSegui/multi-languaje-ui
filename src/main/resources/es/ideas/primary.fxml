@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -10,15 +11,18 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ideas.PrimaryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ideas.PrimaryController">
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="539.2" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <GridPane layoutX="142.0" layoutY="117.0" prefHeight="376.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columnConstraints>
@@ -31,46 +35,107 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ChoiceBox fx:id="cbSemana" prefWidth="150.0" GridPane.rowIndex="1" />
                   <AnchorPane GridPane.columnSpan="2">
                      <children>
-                        <Label prefHeight="126.0" prefWidth="600.0" text="Label" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Label layoutX="23.0" layoutY="87.0" prefHeight="21.0" prefWidth="544.0" text="%lb" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="87.0" />
+                        <ChoiceBox fx:id="cbSemana" layoutX="23.0" layoutY="111.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <TableView prefHeight="200.0" prefWidth="235.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Nombre" />
-                            <TableColumn prefWidth="75.0" text="Apellidos" />
+                            <TableColumn prefWidth="75.0" text="%nombre" />
+                            <TableColumn prefWidth="159.20001525878905" text="%apellidos" />
                           </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <TextField promptText="Escribe lo que quieras" GridPane.rowIndex="2" />
+                  <TextField prefHeight="25.0" prefWidth="217.0" promptText="%tf" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets top="150.0" />
+                     </GridPane.margin></TextField>
                   <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <AreaChart layoutX="-188.0" layoutY="-150.0" prefHeight="250.0" prefWidth="312.0" title="Notas Diseño Interfaces" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AreaChart layoutX="-188.0" layoutY="-150.0" prefHeight="250.0" prefWidth="312.0" title="%grafTitulo" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <xAxis>
-                            <CategoryAxis label="Notas" side="BOTTOM" />
+                            <CategoryAxis label="%grafNotas" side="BOTTOM" />
                           </xAxis>
                           <yAxis>
-                            <NumberAxis label="Medias" side="LEFT" />
+                            <NumberAxis label="%grafMedias" side="LEFT" />
                           </yAxis>
                         </AreaChart>
                      </children>
                   </AnchorPane>
+                  <ButtonBar prefHeight="174.0" prefWidth="143.0" GridPane.rowIndex="2">
+                     <buttons>
+                        <Button mnemonicParsing="false" text="%btnAñadir" />
+                        <Button mnemonicParsing="false" text="%btnEliminar" />
+                     </buttons>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <GridPane.margin>
+                        <Insets bottom="125.0" right="200.0" />
+                     </GridPane.margin>
+                  </ButtonBar>
                </children>
             </GridPane>
          </children>
       </AnchorPane>
    </center>
-   <bottom>
-      <ButtonBar BorderPane.alignment="CENTER">
+   <top>
+      <ButtonBar prefHeight="40.0" prefWidth="363.0" BorderPane.alignment="CENTER">
          <buttons>
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
+            <ToggleButton fx:id="tgES" accessibleHelp="%btnEspañol" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="ES">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pictures/espana.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </ToggleButton>
+            <ToggleButton fx:id="tgEN_US" accessibleHelp="%btnInglesUS" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="US">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pictures/estados-unidos.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </ToggleButton>
+            <ToggleButton fx:id="tgEN_UK" accessibleHelp="%btnFrances" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="UK">
+               <graphic>
+                  <ImageView accessibleHelp="%btnInglesUK" fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pictures/reino-unido.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </ToggleButton>
+            <ToggleButton fx:id="tgFR" accessibleHelp="%btnFrances" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="FR">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pictures/francia.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </ToggleButton>
+            <ToggleButton fx:id="tgIT" accessibleHelp="%btnItaliano" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="IT">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pictures/italia.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </ToggleButton>
          </buttons>
+         <BorderPane.margin>
+            <Insets right="95.0" top="20.0" />
+         </BorderPane.margin>
       </ButtonBar>
-   </bottom>
+   </top>
 </BorderPane>
